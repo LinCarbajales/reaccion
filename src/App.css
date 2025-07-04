@@ -1,0 +1,33 @@
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor {
+  width: 100%;
+}
+
+.boton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #8fcef8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.cuadro {
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
