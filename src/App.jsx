@@ -7,6 +7,7 @@ const JuegoReaccion = () => {
   const [estadoJuego, setEstadoJuego] = useState('inactivo');
   const [tiempoCambio, setTiempoCambio] = useState(null);
   const timeoutRef = useRef(null);
+  const hiScore = useRef(null);
 
   const iniciarJuego = () => {
     if (estadoJuego === 'inactivo' || estadoJuego === 'completado') {
@@ -29,6 +30,10 @@ const JuegoReaccion = () => {
       // Registrar tiempo de reacción
       const tiempoActual = Date.now();
       const tiempoTranscurrido = tiempoActual - tiempoCambio;
+      if (hiScore.current === null || tiempoTranscurrido < hiScore.current) {
+        hiScore.current = tiempoTranscurrido;
+      }
+
       
       setTiempoReaccion(tiempoTranscurrido);
       setEstadoJuego('completado');
@@ -66,6 +71,7 @@ const JuegoReaccion = () => {
       <div style={{ marginTop: '20px' }}>
         {estadoJuego === 'esperando' && <p>El cuadro cambiará a amarillo en 3-7 segundos...</p>}
         {estadoJuego === 'completado' && <p>Reacción: {tiempoReaccion} ms</p>}
+        {hiScore.current != null && <p>Mejor puntuación: {hiScore.current} ms</p> }
       </div>
     </div>
   );
